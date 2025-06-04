@@ -9,19 +9,16 @@ export default defineConfig({
       useDevMode: true, // 开发模式
     }),
   ],
-  base: "/sub-app/",
+  base: import.meta.env.DEV ? "/sub-app/" : "http://127.0.0.1:5501/",
   server: {
-    port: 7101,
+    port: 7100,
     cors: true,
-    origin: "http://localhost:7101",
+    origin: "http://localhost:7100",
   },
   build: {
     rollupOptions: {
       output: {
         format: "umd",
-        // entryFileNames: `[name].js`,
-        // chunkFileNames: `[name].js`,
-        // assetFileNames: `[name].[ext]`,
       },
     },
   },
